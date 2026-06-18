@@ -1,4 +1,4 @@
-# Explainable Multi-Document RAG System
+# AI Study Assistant
 
 ## Overview
 
