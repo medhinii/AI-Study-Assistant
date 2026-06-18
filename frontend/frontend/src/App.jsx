@@ -6,6 +6,7 @@ const API = "http://127.0.0.1:8000";
 
 function App() {
   const [pdf, setPdf] = useState(null);
+  const [fileInputKey, setFileInputKey] = useState(Date.now());
   const [question, setQuestion] = useState("");
   const [youtubeUrl, setYoutubeUrl] = useState("");
 
@@ -27,6 +28,11 @@ function App() {
 
   const [loading, setLoading] = useState("");
 
+  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("");
+  const [score, setScore] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+
   const savePDFs = (updatedPDFs) => {
     setUploadedPDFs(updatedPDFs);
     localStorage.setItem("uploadedPDFs", JSON.stringify(updatedPDFs));
@@ -37,18 +43,116 @@ function App() {
     localStorage.setItem("youtubeHistory", JSON.stringify(updatedHistory));
   };
 
+  const updatePDFInHistory = (updatedPDF) => {
+    const updatedPDFs = uploadedPDFs.map((file) =>
+      file.id === updatedPDF.id ? updatedPDF : file
+    );
+
+    savePDFs(updatedPDFs);
+    setActivePDF(updatedPDF);
+    localStorage.setItem("activePDF", JSON.stringify(updatedPDF));
+  };
+
+  const clearTemporaryInputs = () => {
+    setPdf(null);
+    setQuestion("");
+    setYoutubeUrl("");
+    setFileInputKey(Date.now());
+  };
+
+  const resetQuizUI = () => {
+    setCurrentQuizIndex(0);
+    setSelectedOption("");
+    setScore(0);
+    setShowResult(false);
+  };
+
+  const applyQuizState = (file) => {
+    const savedQuiz = file.quizState || {
+      currentQuizIndex: 0,
+      selectedOption: "",
+      score: 0,
+      showResult: false,
+    };
+
+    setCurrentQuizIndex(savedQuiz.currentQuizIndex || 0);
+    setSelectedOption(savedQuiz.selectedOption || "");
+    setScore(savedQuiz.score || 0);
+    setShowResult(savedQuiz.showResult || false);
+  };
+
   const selectPDF = (file) => {
     setActivePDF(file);
     setActiveYoutube(null);
+
+    clearTemporaryInputs();
+
     localStorage.setItem("activePDF", JSON.stringify(file));
     localStorage.removeItem("activeYoutube");
+
+    applyQuizState(file);
   };
 
   const selectYoutube = (video) => {
     setActiveYoutube(video);
     setActivePDF(null);
+
+    clearTemporaryInputs();
+    resetQuizUI();
+
     localStorage.setItem("activeYoutube", JSON.stringify(video));
     localStorage.removeItem("activePDF");
+  };
+  const deletePDF = (id, event) => {
+  event.stopPropagation();
+
+  const updatedPDFs = uploadedPDFs.filter((file) => file.id !== id);
+  savePDFs(updatedPDFs);
+
+  if (activePDF?.id === id) {
+    setActivePDF(null);
+    localStorage.removeItem("activePDF");
+    clearTemporaryInputs();
+    resetQuizUI();
+  }
+};
+
+const deleteYoutube = (id, event) => {
+  event.stopPropagation();
+
+  const updatedHistory = youtubeHistory.filter((video) => video.id !== id);
+  saveYoutubeHistory(updatedHistory);
+
+  if (activeYoutube?.id === id) {
+    setActiveYoutube(null);
+    localStorage.removeItem("activeYoutube");
+    clearTemporaryInputs();
+  }
+};
+
+  const newChat = () => {
+    setActivePDF(null);
+    setActiveYoutube(null);
+
+    clearTemporaryInputs();
+    resetQuizUI();
+
+    localStorage.removeItem("activePDF");
+    localStorage.removeItem("activeYoutube");
+  };
+
+  const updateQuestionDraft = (value) => {
+    if (!activePDF) {
+      setQuestion(value);
+      return;
+    }
+
+    const updatedPDF = {
+      ...activePDF,
+      questionDraft: value,
+    };
+
+    updatePDFInHistory(updatedPDF);
   };
 
   const cleanLine = (line) => {
@@ -67,6 +171,11 @@ function App() {
       "DETAILED EXPLANATION",
       "KEY TERMS",
       "EXAM NOTES",
+      "MULTIPLE CHOICE QUESTIONS",
+      "TRUE/FALSE QUESTIONS",
+      "SHORT ANSWER QUESTIONS",
+      "ANSWERS",
+      "QUIZ",
     ];
 
     return notes.split("\n").map((line, index) => {
@@ -99,16 +208,16 @@ function App() {
   };
 
   const downloadTextFile = (content, filename) => {
-    const cleanedContent = content
-      .replaceAll("#", "")
-      .replaceAll("*", "")
-      .replaceAll("•", "")
-      .replaceAll("-", "");
+    const cleanedContent =
+      typeof content === "string"
+        ? content
+            .replaceAll("#", "")
+            .replaceAll("*", "")
+            .replaceAll("•", "")
+            .replaceAll("-", "")
+        : JSON.stringify(content, null, 2);
 
-    const blob = new Blob([cleanedContent], {
-      type: "text/plain",
-    });
-
+    const blob = new Blob([cleanedContent], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
 
     const link = document.createElement("a");
@@ -140,6 +249,14 @@ function App() {
         chunks: res.data.chunks_created,
         document_id: res.data.document_id,
         notes: "",
+        quiz: [],
+        quizState: {
+          currentQuizIndex: 0,
+          selectedOption: "",
+          score: 0,
+          showResult: false,
+        },
+        questionDraft: "",
         chatHistory: [],
         uploadedAt: new Date().toLocaleString(),
       };
@@ -164,18 +281,20 @@ function App() {
       return;
     }
 
-    if (!question.trim()) return;
+    const currentQuestion = activePDF.questionDraft || "";
+
+    if (!currentQuestion.trim()) return;
 
     try {
       setLoading("ask");
 
       const res = await axios.post(`${API}/ask`, {
-        question,
+        question: currentQuestion,
         document_id: activePDF.document_id,
       });
 
       const newChat = {
-        question,
+        question: currentQuestion,
         answer: res.data.answer,
         sources: res.data.sources || [],
         askedAt: new Date().toLocaleString(),
@@ -183,16 +302,11 @@ function App() {
 
       const updatedPDF = {
         ...activePDF,
+        questionDraft: "",
         chatHistory: [newChat, ...(activePDF.chatHistory || [])],
       };
 
-      const updatedPDFs = uploadedPDFs.map((file) =>
-        file.id === activePDF.id ? updatedPDF : file
-      );
-
-      savePDFs(updatedPDFs);
-      selectPDF(updatedPDF);
-      setQuestion("");
+      updatePDFInHistory(updatedPDF);
     } catch (error) {
       console.error(error);
       alert("Question failed. Check backend terminal.");
@@ -202,36 +316,145 @@ function App() {
   };
 
   const summarizePDF = async () => {
-    if (!activePDF) {
-      alert("Please select or upload a PDF first.");
+  if (!activePDF) {
+    alert("Please select or upload a PDF first.");
+    return;
+  }
+
+  if (activePDF.notes) {
+    alert("Notes are already generated for this PDF.");
+    return;
+  }
+
+  try {
+    setLoading("summary");
+
+    const res = await axios.post(`${API}/summarize-pdf`, {
+      question: "summary",
+      document_id: activePDF.document_id,
+    });
+
+    const updatedPDF = {
+      ...activePDF,
+      notes: res.data.notes,
+    };
+
+    updatePDFInHistory(updatedPDF);
+  } catch (error) {
+    console.error(error);
+    alert("PDF notes generation failed.");
+  } finally {
+    setLoading("");
+  }
+};
+  const generateQuiz = async () => {
+  if (!activePDF) {
+    alert("Please select or upload a PDF first.");
+    return;
+  }
+
+  if (activePDF.quiz && activePDF.quiz.length > 0) {
+    alert("Quiz is already generated for this PDF.");
+    return;
+  }
+
+  try {
+    setLoading("quiz");
+
+    const res = await axios.post(`${API}/generate-quiz`, {
+      document_id: activePDF.document_id,
+    });
+
+    const freshQuizState = {
+      currentQuizIndex: 0,
+      selectedOption: "",
+      score: 0,
+      showResult: false,
+    };
+
+    const updatedPDF = {
+      ...activePDF,
+      quiz: res.data.quiz,
+      quizState: freshQuizState,
+    };
+
+    updatePDFInHistory(updatedPDF);
+
+    setCurrentQuizIndex(0);
+    setSelectedOption("");
+    setScore(0);
+    setShowResult(false);
+  } catch (error) {
+    console.error(error);
+    alert("Quiz generation failed. Check backend terminal.");
+  } finally {
+    setLoading("");
+  }
+};
+  const handleSelectOption = (option) => {
+    if (showResult) return;
+
+    setSelectedOption(option);
+
+    updateQuizState({
+      currentQuizIndex,
+      selectedOption: option,
+      score,
+      showResult: false,
+    });
+  };
+
+  const handleSubmitAnswer = () => {
+    if (!selectedOption) {
+      alert("Select an option first.");
       return;
     }
 
-    try {
-      setLoading("summary");
+    const correctAnswer = activePDF.quiz[currentQuizIndex].answer;
+    const isCorrect = selectedOption === correctAnswer;
 
-      const res = await axios.post(`${API}/summarize-pdf`, {
-        question: "summary",
-        document_id: activePDF.document_id,
-      });
+    const newScore = isCorrect ? score + 1 : score;
 
-      const updatedPDF = {
-        ...activePDF,
-        notes: res.data.notes,
-      };
+    setScore(newScore);
+    setShowResult(true);
 
-      const updatedPDFs = uploadedPDFs.map((file) =>
-        file.id === activePDF.id ? updatedPDF : file
-      );
+    updateQuizState({
+      currentQuizIndex,
+      selectedOption,
+      score: newScore,
+      showResult: true,
+    });
+  };
 
-      savePDFs(updatedPDFs);
-      selectPDF(updatedPDF);
-    } catch (error) {
-      console.error(error);
-      alert("PDF notes generation failed.");
-    } finally {
-      setLoading("");
-    }
+  const handleNextQuestion = () => {
+    const nextIndex = currentQuizIndex + 1;
+
+    setCurrentQuizIndex(nextIndex);
+    setSelectedOption("");
+    setShowResult(false);
+
+    updateQuizState({
+      currentQuizIndex: nextIndex,
+      selectedOption: "",
+      score,
+      showResult: false,
+    });
+  };
+
+  const restartQuiz = () => {
+    const freshQuizState = {
+      currentQuizIndex: 0,
+      selectedOption: "",
+      score: 0,
+      showResult: false,
+    };
+
+    setCurrentQuizIndex(0);
+    setSelectedOption("");
+    setScore(0);
+    setShowResult(false);
+
+    updateQuizState(freshQuizState);
   };
 
   const generateYoutubeNotes = async () => {
@@ -277,19 +500,40 @@ function App() {
     setQuestion("");
     setYoutubeUrl("");
     setPdf(null);
+    setFileInputKey(Date.now());
+    resetQuizUI();
 
     alert("History cleared.");
   };
+  const deleteQuestion = (questionIndex) => {
+  if (!activePDF) return;
+
+  const updatedChatHistory = activePDF.chatHistory.filter(
+    (_, index) => index !== questionIndex
+  );
+
+  const updatedPDF = {
+    ...activePDF,
+    chatHistory: updatedChatHistory,
+  };
+
+  updatePDFInHistory(updatedPDF);
+};
 
   return (
     <div className="app">
       <aside className="sidebar">
         <div className="logo">📚 StudyAI</div>
 
+        <button className="new-chat-btn" onClick={newChat}>
+          + New Chat
+        </button>
+
         <nav>
           <a href="#upload">Upload PDF</a>
           <a href="#ask">Ask Questions</a>
           <a href="#summary">PDF Notes</a>
+          <a href="#quiz">Quiz Generator</a>
           <a href="#youtube">YouTube Notes</a>
         </nav>
 
@@ -299,20 +543,30 @@ function App() {
           {uploadedPDFs.length === 0 ? (
             <p className="muted">No PDFs uploaded yet</p>
           ) : (
-            uploadedPDFs.map((file) => (
-              <button
-                className={
-                  activePDF?.id === file.id
-                    ? "history-item active-history"
-                    : "history-item"
-                }
-                key={file.id}
-                onClick={() => selectPDF(file)}
-              >
-                <span>📄 {file.name}</span>
-                <small>{file.chunks} chunks</small>
-              </button>
-            ))
+           uploadedPDFs.map((file) => (
+  <div
+    className={
+      activePDF?.id === file.id
+        ? "history-item active-history"
+        : "history-item"
+    }
+    key={file.id}
+    onClick={() => selectPDF(file)}
+  >
+    <div>
+      <span>📄 {file.name}</span>
+      <small>{file.chunks} chunks</small>
+    </div>
+
+    <button
+      className="delete-chat-btn"
+      onClick={(e) => deletePDF(file.id, e)}
+      title="Delete chat"
+    >
+      🗑️
+    </button>
+  </div>
+))
           )}
         </div>
 
@@ -323,19 +577,29 @@ function App() {
             <p className="muted">No videos yet</p>
           ) : (
             youtubeHistory.map((video) => (
-              <button
-                className={
-                  activeYoutube?.id === video.id
-                    ? "history-item active-history"
-                    : "history-item"
-                }
-                key={video.id}
-                onClick={() => selectYoutube(video)}
-              >
-                <span>▶️ YouTube Notes</span>
-                <small>{video.generatedAt}</small>
-              </button>
-            ))
+  <div
+    className={
+      activeYoutube?.id === video.id
+        ? "history-item active-history"
+        : "history-item"
+    }
+    key={video.id}
+    onClick={() => selectYoutube(video)}
+  >
+    <div>
+      <span>▶️ YouTube Notes</span>
+      <small>{video.generatedAt}</small>
+    </div>
+
+    <button
+      className="delete-chat-btn"
+      onClick={(e) => deleteYoutube(video.id, e)}
+      title="Delete chat"
+    >
+      🗑️
+    </button>
+  </div>
+))
           )}
         </div>
 
@@ -349,10 +613,20 @@ function App() {
           <p className="badge">Explainable AI Learning Platform</p>
           <h1>Turn PDFs and YouTube videos into study material.</h1>
           <p className="hero-text">
-            Ask questions, generate notes, and view source-backed answers from
-            your uploaded content.
+            Ask questions, generate notes, create quizzes, and view
+            source-backed answers from your uploaded content.
           </p>
         </section>
+
+        {!activePDF && !activeYoutube && (
+          <section className="active-card">
+            <h2>New Chat</h2>
+            <p>
+              Upload a PDF or generate YouTube notes. Your old PDFs and videos
+              will stay preserved in the sidebar history.
+            </p>
+          </section>
+        )}
 
         {activePDF && (
           <section className="active-card">
@@ -382,17 +656,14 @@ function App() {
 
             <label className="file-box">
               <input
+                key={fileInputKey}
                 type="file"
                 accept=".pdf"
                 onChange={(e) => setPdf(e.target.files[0])}
               />
               <span>
-                {pdf
-                  ? pdf.name
-                  : activePDF
-                  ? activePDF.name
-                  : "Choose a PDF file"}
-              </span>
+  {pdf ? pdf.name : activePDF ? activePDF.name : "Choose a PDF file"}
+</span>
             </label>
 
             <button onClick={uploadPDF}>
@@ -410,6 +681,17 @@ function App() {
               {loading === "summary" ? "Generating..." : "Generate Notes"}
             </button>
           </div>
+
+          <div className="card" id="quiz">
+            <h2>Generate Quiz</h2>
+            <p className="card-subtitle">
+              Create an interactive MCQ quiz from the selected PDF.
+            </p>
+
+            <button onClick={generateQuiz}>
+              {loading === "quiz" ? "Generating..." : "Generate Quiz"}
+            </button>
+          </div>
         </section>
 
         <section className="card wide" id="ask">
@@ -422,8 +704,8 @@ function App() {
             <input
               type="text"
               placeholder="Example: Explain paging in operating systems..."
-              value={question}
-              onChange={(e) => setQuestion(e.target.value)}
+              value={activePDF ? activePDF.questionDraft || "" : question}
+              onChange={(e) => updateQuestionDraft(e.target.value)}
             />
 
             <button onClick={askQuestion}>
@@ -437,13 +719,25 @@ function App() {
             <h2>Q&A History for {activePDF.name}</h2>
 
             {activePDF.chatHistory.map((chat, index) => (
-              <div className="chat-card" key={index}>
-                <div className="question-bubble">Q: {chat.question}</div>
+  <div className="chat-card" key={index}>
 
-                <div className="answer-bubble">A: {chat.answer}</div>
+    <button
+      className="delete-question-btn"
+      onClick={() => deleteQuestion(index)}
+    >
+      🗑
+    </button>
 
-                {chat.sources.length > 0 && (
-                  <div className="sources">
+    <div className="question-bubble">
+      Q: {chat.question}
+    </div>
+
+    <div className="answer-bubble">
+      A: {chat.answer}
+    </div>
+
+    {chat.sources.length > 0 && (
+      <div className="sources">
                     <h3>Sources Used</h3>
 
                     {chat.sources.map((source, idx) => (
@@ -479,6 +773,110 @@ function App() {
 
             <div className="formatted-notes">
               {renderFormattedNotes(activePDF.notes)}
+            </div>
+          </section>
+        )}
+
+        {Array.isArray(activePDF?.quiz) && activePDF.quiz.length > 0 && (
+          <section className="quiz-card-modern" id="quiz">
+            <div className="quiz-top">
+              <div>
+                <h2>Quiz for {activePDF.name}</h2>
+                <p>
+                  Question {currentQuizIndex + 1} of {activePDF.quiz.length}
+                </p>
+              </div>
+
+              <div className="quiz-score-box">
+                Score: {score} / {activePDF.quiz.length}
+              </div>
+            </div>
+
+            <div className="quiz-progress">
+              <div
+                className="quiz-progress-fill"
+                style={{
+                  width: `${
+                    ((currentQuizIndex + 1) / activePDF.quiz.length) * 100
+                  }%`,
+                }}
+              ></div>
+            </div>
+
+            <h3 className="quiz-question-modern">
+              {activePDF.quiz[currentQuizIndex].question}
+            </h3>
+
+            <div className="quiz-options-list">
+              {activePDF.quiz[currentQuizIndex].options.map((option, index) => {
+                const correct = activePDF.quiz[currentQuizIndex].answer;
+
+                let className = "quiz-option-line";
+
+                if (selectedOption === option && !showResult) {
+                  className += " selected-option";
+                }
+
+                if (showResult && option === correct) {
+                  className += " correct-option";
+                }
+
+                if (
+                  showResult &&
+                  selectedOption === option &&
+                  option !== correct
+                ) {
+                  className += " wrong-option";
+                }
+
+                return (
+                  <button
+                    key={index}
+                    className={className}
+                    disabled={showResult}
+                    onClick={() => handleSelectOption(option)}
+                  >
+                    <span className="option-letter">
+                      {String.fromCharCode(65 + index)}
+                    </span>
+                    <span>{option}</span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {showResult && (
+              <div
+                className={
+                  selectedOption === activePDF.quiz[currentQuizIndex].answer
+                    ? "quiz-feedback correct-feedback"
+                    : "quiz-feedback wrong-feedback"
+                }
+              >
+                {selectedOption === activePDF.quiz[currentQuizIndex].answer ? (
+                  <p>Correct answer!</p>
+                ) : (
+                  <p>
+                    Wrong answer. Correct answer is:{" "}
+                    <strong>{activePDF.quiz[currentQuizIndex].answer}</strong>
+                  </p>
+                )}
+              </div>
+            )}
+
+            <div className="quiz-actions">
+              {!showResult ? (
+                <button onClick={handleSubmitAnswer}>Submit Answer</button>
+              ) : currentQuizIndex < activePDF.quiz.length - 1 ? (
+                <button onClick={handleNextQuestion}>Next Question</button>
+              ) : (
+                <div className="final-score-card">
+                  <h2>
+                    Final Score: {score} / {activePDF.quiz.length}
+                  </h2>
+                  <button onClick={restartQuiz}>Restart Quiz</button>
+                </div>
+              )}
             </div>
           </section>
         )}

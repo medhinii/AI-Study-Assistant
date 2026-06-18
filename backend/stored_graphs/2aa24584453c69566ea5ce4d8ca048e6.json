@@ -1,0 +1,1257 @@
+{
+  "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+  "concept_to_chunks": {
+    "deadlocks": [
+      "2aa24584453c69566ea5ce4d8ca048e6_0",
+      "2aa24584453c69566ea5ce4d8ca048e6_1",
+      "2aa24584453c69566ea5ce4d8ca048e6_2",
+      "2aa24584453c69566ea5ce4d8ca048e6_11",
+      "2aa24584453c69566ea5ce4d8ca048e6_12",
+      "2aa24584453c69566ea5ce4d8ca048e6_25",
+      "2aa24584453c69566ea5ce4d8ca048e6_53"
+    ],
+    "wait": [
+      "2aa24584453c69566ea5ce4d8ca048e6_1",
+      "2aa24584453c69566ea5ce4d8ca048e6_18",
+      "2aa24584453c69566ea5ce4d8ca048e6_31",
+      "2aa24584453c69566ea5ce4d8ca048e6_42"
+    ],
+    "process": [
+      "2aa24584453c69566ea5ce4d8ca048e6_1",
+      "2aa24584453c69566ea5ce4d8ca048e6_2",
+      "2aa24584453c69566ea5ce4d8ca048e6_4",
+      "2aa24584453c69566ea5ce4d8ca048e6_5",
+      "2aa24584453c69566ea5ce4d8ca048e6_7",
+      "2aa24584453c69566ea5ce4d8ca048e6_15",
+      "2aa24584453c69566ea5ce4d8ca048e6_16",
+      "2aa24584453c69566ea5ce4d8ca048e6_17",
+      "2aa24584453c69566ea5ce4d8ca048e6_18",
+      "2aa24584453c69566ea5ce4d8ca048e6_20",
+      "2aa24584453c69566ea5ce4d8ca048e6_26",
+      "2aa24584453c69566ea5ce4d8ca048e6_28",
+      "2aa24584453c69566ea5ce4d8ca048e6_30",
+      "2aa24584453c69566ea5ce4d8ca048e6_31",
+      "2aa24584453c69566ea5ce4d8ca048e6_32",
+      "2aa24584453c69566ea5ce4d8ca048e6_33",
+      "2aa24584453c69566ea5ce4d8ca048e6_37",
+      "2aa24584453c69566ea5ce4d8ca048e6_43",
+      "2aa24584453c69566ea5ce4d8ca048e6_51",
+      "2aa24584453c69566ea5ce4d8ca048e6_52",
+      "2aa24584453c69566ea5ce4d8ca048e6_53",
+      "2aa24584453c69566ea5ce4d8ca048e6_54"
+    ],
+    "another": [
+      "2aa24584453c69566ea5ce4d8ca048e6_1"
+    ],
+    "example": [
+      "2aa24584453c69566ea5ce4d8ca048e6_1",
+      "2aa24584453c69566ea5ce4d8ca048e6_35",
+      "2aa24584453c69566ea5ce4d8ca048e6_36",
+      "2aa24584453c69566ea5ce4d8ca048e6_39",
+      "2aa24584453c69566ea5ce4d8ca048e6_42",
+      "2aa24584453c69566ea5ce4d8ca048e6_46",
+      "2aa24584453c69566ea5ce4d8ca048e6_47"
+    ],
+    "disk": [
+      "2aa24584453c69566ea5ce4d8ca048e6_1"
+    ],
+    "deadlock": [
+      "2aa24584453c69566ea5ce4d8ca048e6_1",
+      "2aa24584453c69566ea5ce4d8ca048e6_4",
+      "2aa24584453c69566ea5ce4d8ca048e6_8",
+      "2aa24584453c69566ea5ce4d8ca048e6_9",
+      "2aa24584453c69566ea5ce4d8ca048e6_10",
+      "2aa24584453c69566ea5ce4d8ca048e6_11",
+      "2aa24584453c69566ea5ce4d8ca048e6_12",
+      "2aa24584453c69566ea5ce4d8ca048e6_14",
+      "2aa24584453c69566ea5ce4d8ca048e6_15",
+      "2aa24584453c69566ea5ce4d8ca048e6_17",
+      "2aa24584453c69566ea5ce4d8ca048e6_19",
+      "2aa24584453c69566ea5ce4d8ca048e6_21",
+      "2aa24584453c69566ea5ce4d8ca048e6_25",
+      "2aa24584453c69566ea5ce4d8ca048e6_26",
+      "2aa24584453c69566ea5ce4d8ca048e6_40",
+      "2aa24584453c69566ea5ce4d8ca048e6_44",
+      "2aa24584453c69566ea5ce4d8ca048e6_45",
+      "2aa24584453c69566ea5ce4d8ca048e6_48",
+      "2aa24584453c69566ea5ce4d8ca048e6_50",
+      "2aa24584453c69566ea5ce4d8ca048e6_51"
+    ],
+    "processes": [
+      "2aa24584453c69566ea5ce4d8ca048e6_1",
+      "2aa24584453c69566ea5ce4d8ca048e6_5",
+      "2aa24584453c69566ea5ce4d8ca048e6_14",
+      "2aa24584453c69566ea5ce4d8ca048e6_22",
+      "2aa24584453c69566ea5ce4d8ca048e6_35",
+      "2aa24584453c69566ea5ce4d8ca048e6_46",
+      "2aa24584453c69566ea5ce4d8ca048e6_47",
+      "2aa24584453c69566ea5ce4d8ca048e6_48",
+      "2aa24584453c69566ea5ce4d8ca048e6_49",
+      "2aa24584453c69566ea5ce4d8ca048e6_50",
+      "2aa24584453c69566ea5ce4d8ca048e6_51",
+      "2aa24584453c69566ea5ce4d8ca048e6_52",
+      "2aa24584453c69566ea5ce4d8ca048e6_53"
+    ],
+    "never": [
+      "2aa24584453c69566ea5ce4d8ca048e6_2",
+      "2aa24584453c69566ea5ce4d8ca048e6_11",
+      "2aa24584453c69566ea5ce4d8ca048e6_12"
+    ],
+    "deadlocked": [
+      "2aa24584453c69566ea5ce4d8ca048e6_2",
+      "2aa24584453c69566ea5ce4d8ca048e6_25",
+      "2aa24584453c69566ea5ce4d8ca048e6_49",
+      "2aa24584453c69566ea5ce4d8ca048e6_51",
+      "2aa24584453c69566ea5ce4d8ca048e6_52"
+    ],
+    "waiting": [
+      "2aa24584453c69566ea5ce4d8ca048e6_2",
+      "2aa24584453c69566ea5ce4d8ca048e6_5",
+      "2aa24584453c69566ea5ce4d8ca048e6_17"
+    ],
+    "event": [
+      "2aa24584453c69566ea5ce4d8ca048e6_2"
+    ],
+    "occur": [
+      "2aa24584453c69566ea5ce4d8ca048e6_2",
+      "2aa24584453c69566ea5ce4d8ca048e6_12"
+    ],
+    "typically": [
+      "2aa24584453c69566ea5ce4d8ca048e6_2"
+    ],
+    "system": [
+      "2aa24584453c69566ea5ce4d8ca048e6_3",
+      "2aa24584453c69566ea5ce4d8ca048e6_6",
+      "2aa24584453c69566ea5ce4d8ca048e6_11",
+      "2aa24584453c69566ea5ce4d8ca048e6_12",
+      "2aa24584453c69566ea5ce4d8ca048e6_13",
+      "2aa24584453c69566ea5ce4d8ca048e6_23",
+      "2aa24584453c69566ea5ce4d8ca048e6_25",
+      "2aa24584453c69566ea5ce4d8ca048e6_26",
+      "2aa24584453c69566ea5ce4d8ca048e6_30",
+      "2aa24584453c69566ea5ce4d8ca048e6_36",
+      "2aa24584453c69566ea5ce4d8ca048e6_40",
+      "2aa24584453c69566ea5ce4d8ca048e6_45"
+    ],
+    "release": [
+      "2aa24584453c69566ea5ce4d8ca048e6_3"
+    ],
+    "model": [
+      "2aa24584453c69566ea5ce4d8ca048e6_3"
+    ],
+    "oresource": [
+      "2aa24584453c69566ea5ce4d8ca048e6_3"
+    ],
+    "types": [
+      "2aa24584453c69566ea5ce4d8ca048e6_3",
+      "2aa24584453c69566ea5ce4d8ca048e6_6",
+      "2aa24584453c69566ea5ce4d8ca048e6_19",
+      "2aa24584453c69566ea5ce4d8ca048e6_35"
+    ],
+    "oeach": [
+      "2aa24584453c69566ea5ce4d8ca048e6_3"
+    ],
+    "resource": [
+      "2aa24584453c69566ea5ce4d8ca048e6_3",
+      "2aa24584453c69566ea5ce4d8ca048e6_4",
+      "2aa24584453c69566ea5ce4d8ca048e6_5",
+      "2aa24584453c69566ea5ce4d8ca048e6_6",
+      "2aa24584453c69566ea5ce4d8ca048e6_7",
+      "2aa24584453c69566ea5ce4d8ca048e6_9",
+      "2aa24584453c69566ea5ce4d8ca048e6_10",
+      "2aa24584453c69566ea5ce4d8ca048e6_16",
+      "2aa24584453c69566ea5ce4d8ca048e6_19",
+      "2aa24584453c69566ea5ce4d8ca048e6_20",
+      "2aa24584453c69566ea5ce4d8ca048e6_21",
+      "2aa24584453c69566ea5ce4d8ca048e6_26",
+      "2aa24584453c69566ea5ce4d8ca048e6_27",
+      "2aa24584453c69566ea5ce4d8ca048e6_28",
+      "2aa24584453c69566ea5ce4d8ca048e6_29",
+      "2aa24584453c69566ea5ce4d8ca048e6_30",
+      "2aa24584453c69566ea5ce4d8ca048e6_32",
+      "2aa24584453c69566ea5ce4d8ca048e6_33",
+      "2aa24584453c69566ea5ce4d8ca048e6_35",
+      "2aa24584453c69566ea5ce4d8ca048e6_37",
+      "2aa24584453c69566ea5ce4d8ca048e6_41",
+      "2aa24584453c69566ea5ce4d8ca048e6_42",
+      "2aa24584453c69566ea5ce4d8ca048e6_43",
+      "2aa24584453c69566ea5ce4d8ca048e6_46",
+      "2aa24584453c69566ea5ce4d8ca048e6_49",
+      "2aa24584453c69566ea5ce4d8ca048e6_53"
+    ],
+    "type": [
+      "2aa24584453c69566ea5ce4d8ca048e6_3",
+      "2aa24584453c69566ea5ce4d8ca048e6_7",
+      "2aa24584453c69566ea5ce4d8ca048e6_10",
+      "2aa24584453c69566ea5ce4d8ca048e6_19",
+      "2aa24584453c69566ea5ce4d8ca048e6_20",
+      "2aa24584453c69566ea5ce4d8ca048e6_27",
+      "2aa24584453c69566ea5ce4d8ca048e6_30",
+      "2aa24584453c69566ea5ce4d8ca048e6_32",
+      "2aa24584453c69566ea5ce4d8ca048e6_33",
+      "2aa24584453c69566ea5ce4d8ca048e6_43"
+    ],
+    "hold": [
+      "2aa24584453c69566ea5ce4d8ca048e6_4",
+      "2aa24584453c69566ea5ce4d8ca048e6_15",
+      "2aa24584453c69566ea5ce4d8ca048e6_18"
+    ],
+    "holding": [
+      "2aa24584453c69566ea5ce4d8ca048e6_4"
+    ],
+    "characterization": [
+      "2aa24584453c69566ea5ce4d8ca048e6_4"
+    ],
+    "arise": [
+      "2aa24584453c69566ea5ce4d8ca048e6_4"
+    ],
+    "four": [
+      "2aa24584453c69566ea5ce4d8ca048e6_4"
+    ],
+    "held": [
+      "2aa24584453c69566ea5ce4d8ca048e6_5"
+    ],
+    "circular": [
+      "2aa24584453c69566ea5ce4d8ca048e6_5"
+    ],
+    "exists": [
+      "2aa24584453c69566ea5ce4d8ca048e6_5",
+      "2aa24584453c69566ea5ce4d8ca048e6_23",
+      "2aa24584453c69566ea5ce4d8ca048e6_50"
+    ],
+    "chain": [
+      "2aa24584453c69566ea5ce4d8ca048e6_5"
+    ],
+    "edge": [
+      "2aa24584453c69566ea5ce4d8ca048e6_6",
+      "2aa24584453c69566ea5ce4d8ca048e6_28"
+    ],
+    "consisting": [
+      "2aa24584453c69566ea5ce4d8ca048e6_6"
+    ],
+    "directed": [
+      "2aa24584453c69566ea5ce4d8ca048e6_6"
+    ],
+    "allocation": [
+      "2aa24584453c69566ea5ce4d8ca048e6_6",
+      "2aa24584453c69566ea5ce4d8ca048e6_7",
+      "2aa24584453c69566ea5ce4d8ca048e6_9",
+      "2aa24584453c69566ea5ce4d8ca048e6_21",
+      "2aa24584453c69566ea5ce4d8ca048e6_27",
+      "2aa24584453c69566ea5ce4d8ca048e6_28",
+      "2aa24584453c69566ea5ce4d8ca048e6_29",
+      "2aa24584453c69566ea5ce4d8ca048e6_32",
+      "2aa24584453c69566ea5ce4d8ca048e6_36",
+      "2aa24584453c69566ea5ce4d8ca048e6_39",
+      "2aa24584453c69566ea5ce4d8ca048e6_42",
+      "2aa24584453c69566ea5ce4d8ca048e6_43"
+    ],
+    "graph": [
+      "2aa24584453c69566ea5ce4d8ca048e6_6",
+      "2aa24584453c69566ea5ce4d8ca048e6_7",
+      "2aa24584453c69566ea5ce4d8ca048e6_8",
+      "2aa24584453c69566ea5ce4d8ca048e6_9",
+      "2aa24584453c69566ea5ce4d8ca048e6_10",
+      "2aa24584453c69566ea5ce4d8ca048e6_27",
+      "2aa24584453c69566ea5ce4d8ca048e6_28",
+      "2aa24584453c69566ea5ce4d8ca048e6_29",
+      "2aa24584453c69566ea5ce4d8ca048e6_41",
+      "2aa24584453c69566ea5ce4d8ca048e6_42",
+      "2aa24584453c69566ea5ce4d8ca048e6_49"
+    ],
+    "instance": [
+      "2aa24584453c69566ea5ce4d8ca048e6_7",
+      "2aa24584453c69566ea5ce4d8ca048e6_27",
+      "2aa24584453c69566ea5ce4d8ca048e6_41",
+      "2aa24584453c69566ea5ce4d8ca048e6_47"
+    ],
+    "instances": [
+      "2aa24584453c69566ea5ce4d8ca048e6_7",
+      "2aa24584453c69566ea5ce4d8ca048e6_20",
+      "2aa24584453c69566ea5ce4d8ca048e6_30",
+      "2aa24584453c69566ea5ce4d8ca048e6_32",
+      "2aa24584453c69566ea5ce4d8ca048e6_33",
+      "2aa24584453c69566ea5ce4d8ca048e6_35",
+      "2aa24584453c69566ea5ce4d8ca048e6_43",
+      "2aa24584453c69566ea5ce4d8ca048e6_46"
+    ],
+    "requests": [
+      "2aa24584453c69566ea5ce4d8ca048e6_7",
+      "2aa24584453c69566ea5ce4d8ca048e6_47"
+    ],
+    "cycle": [
+      "2aa24584453c69566ea5ce4d8ca048e6_8",
+      "2aa24584453c69566ea5ce4d8ca048e6_29",
+      "2aa24584453c69566ea5ce4d8ca048e6_41"
+    ],
+    "contains": [
+      "2aa24584453c69566ea5ce4d8ca048e6_10"
+    ],
+    "basic": [
+      "2aa24584453c69566ea5ce4d8ca048e6_10"
+    ],
+    "facts": [
+      "2aa24584453c69566ea5ce4d8ca048e6_10"
+    ],
+    "cycles": [
+      "2aa24584453c69566ea5ce4d8ca048e6_10"
+    ],
+    "enter": [
+      "2aa24584453c69566ea5ce4d8ca048e6_11",
+      "2aa24584453c69566ea5ce4d8ca048e6_40"
+    ],
+    "state": [
+      "2aa24584453c69566ea5ce4d8ca048e6_11",
+      "2aa24584453c69566ea5ce4d8ca048e6_23",
+      "2aa24584453c69566ea5ce4d8ca048e6_25",
+      "2aa24584453c69566ea5ce4d8ca048e6_26",
+      "2aa24584453c69566ea5ce4d8ca048e6_40",
+      "2aa24584453c69566ea5ce4d8ca048e6_54"
+    ],
+    "methods": [
+      "2aa24584453c69566ea5ce4d8ca048e6_11"
+    ],
+    "handling": [
+      "2aa24584453c69566ea5ce4d8ca048e6_11"
+    ],
+    "management": [
+      "2aa24584453c69566ea5ce4d8ca048e6_12",
+      "2aa24584453c69566ea5ce4d8ca048e6_14"
+    ],
+    "prevention": [
+      "2aa24584453c69566ea5ce4d8ca048e6_12",
+      "2aa24584453c69566ea5ce4d8ca048e6_15",
+      "2aa24584453c69566ea5ce4d8ca048e6_17",
+      "2aa24584453c69566ea5ce4d8ca048e6_19"
+    ],
+    "design": [
+      "2aa24584453c69566ea5ce4d8ca048e6_12"
+    ],
+    "requires": [
+      "2aa24584453c69566ea5ce4d8ca048e6_13",
+      "2aa24584453c69566ea5ce4d8ca048e6_21"
+    ],
+    "additional": [
+      "2aa24584453c69566ea5ce4d8ca048e6_13",
+      "2aa24584453c69566ea5ce4d8ca048e6_47"
+    ],
+    "appropriate": [
+      "2aa24584453c69566ea5ce4d8ca048e6_13"
+    ],
+    "information": [
+      "2aa24584453c69566ea5ce4d8ca048e6_13"
+    ],
+    "regarding": [
+      "2aa24584453c69566ea5ce4d8ca048e6_13"
+    ],
+    "overall": [
+      "2aa24584453c69566ea5ce4d8ca048e6_13"
+    ],
+    "potential": [
+      "2aa24584453c69566ea5ce4d8ca048e6_13"
+    ],
+    "detection": [
+      "2aa24584453c69566ea5ce4d8ca048e6_14",
+      "2aa24584453c69566ea5ce4d8ca048e6_40",
+      "2aa24584453c69566ea5ce4d8ca048e6_44",
+      "2aa24584453c69566ea5ce4d8ca048e6_46",
+      "2aa24584453c69566ea5ce4d8ca048e6_47",
+      "2aa24584453c69566ea5ce4d8ca048e6_48",
+      "2aa24584453c69566ea5ce4d8ca048e6_50"
+    ],
+    "allow": [
+      "2aa24584453c69566ea5ce4d8ca048e6_14",
+      "2aa24584453c69566ea5ce4d8ca048e6_40"
+    ],
+    "resources": [
+      "2aa24584453c69566ea5ce4d8ca048e6_14",
+      "2aa24584453c69566ea5ce4d8ca048e6_15",
+      "2aa24584453c69566ea5ce4d8ca048e6_16",
+      "2aa24584453c69566ea5ce4d8ca048e6_17",
+      "2aa24584453c69566ea5ce4d8ca048e6_19",
+      "2aa24584453c69566ea5ce4d8ca048e6_21",
+      "2aa24584453c69566ea5ce4d8ca048e6_23",
+      "2aa24584453c69566ea5ce4d8ca048e6_24",
+      "2aa24584453c69566ea5ce4d8ca048e6_30",
+      "2aa24584453c69566ea5ce4d8ca048e6_31",
+      "2aa24584453c69566ea5ce4d8ca048e6_38",
+      "2aa24584453c69566ea5ce4d8ca048e6_47",
+      "2aa24584453c69566ea5ce4d8ca048e6_53"
+    ],
+    "possibility": [
+      "2aa24584453c69566ea5ce4d8ca048e6_14",
+      "2aa24584453c69566ea5ce4d8ca048e6_25"
+    ],
+    "determine": [
+      "2aa24584453c69566ea5ce4d8ca048e6_14"
+    ],
+    "sharable": [
+      "2aa24584453c69566ea5ce4d8ca048e6_15"
+    ],
+    "conditions": [
+      "2aa24584453c69566ea5ce4d8ca048e6_15"
+    ],
+    "reusable": [
+      "2aa24584453c69566ea5ce4d8ca048e6_15"
+    ],
+    "make": [
+      "2aa24584453c69566ea5ce4d8ca048e6_16"
+    ],
+    "request": [
+      "2aa24584453c69566ea5ce4d8ca048e6_16",
+      "2aa24584453c69566ea5ce4d8ca048e6_19",
+      "2aa24584453c69566ea5ce4d8ca048e6_20",
+      "2aa24584453c69566ea5ce4d8ca048e6_28",
+      "2aa24584453c69566ea5ce4d8ca048e6_37",
+      "2aa24584453c69566ea5ce4d8ca048e6_39",
+      "2aa24584453c69566ea5ce4d8ca048e6_43"
+    ],
+    "after": [
+      "2aa24584453c69566ea5ce4d8ca048e6_16",
+      "2aa24584453c69566ea5ce4d8ca048e6_20"
+    ],
+    "releasing": [
+      "2aa24584453c69566ea5ce4d8ca048e6_16"
+    ],
+    "current": [
+      "2aa24584453c69566ea5ce4d8ca048e6_16"
+    ],
+    "preempt": [
+      "2aa24584453c69566ea5ce4d8ca048e6_17"
+    ],
+    "check": [
+      "2aa24584453c69566ea5ce4d8ca048e6_17",
+      "2aa24584453c69566ea5ce4d8ca048e6_39"
+    ],
+    "allocate": [
+      "2aa24584453c69566ea5ce4d8ca048e6_17"
+    ],
+    "requesting": [
+      "2aa24584453c69566ea5ce4d8ca048e6_18"
+    ],
+    "both": [
+      "2aa24584453c69566ea5ce4d8ca048e6_18"
+    ],
+    "made": [
+      "2aa24584453c69566ea5ce4d8ca048e6_18"
+    ],
+    "ordering": [
+      "2aa24584453c69566ea5ce4d8ca048e6_19"
+    ],
+    "initially": [
+      "2aa24584453c69566ea5ce4d8ca048e6_20"
+    ],
+    "number": [
+      "2aa24584453c69566ea5ce4d8ca048e6_20",
+      "2aa24584453c69566ea5ce4d8ca048e6_21",
+      "2aa24584453c69566ea5ce4d8ca048e6_30",
+      "2aa24584453c69566ea5ce4d8ca048e6_32",
+      "2aa24584453c69566ea5ce4d8ca048e6_34"
+    ],
+    "avoidance": [
+      "2aa24584453c69566ea5ce4d8ca048e6_21",
+      "2aa24584453c69566ea5ce4d8ca048e6_26",
+      "2aa24584453c69566ea5ce4d8ca048e6_27"
+    ],
+    "available": [
+      "2aa24584453c69566ea5ce4d8ca048e6_21",
+      "2aa24584453c69566ea5ce4d8ca048e6_23",
+      "2aa24584453c69566ea5ce4d8ca048e6_32",
+      "2aa24584453c69566ea5ce4d8ca048e6_37",
+      "2aa24584453c69566ea5ce4d8ca048e6_38",
+      "2aa24584453c69566ea5ce4d8ca048e6_39",
+      "2aa24584453c69566ea5ce4d8ca048e6_43"
+    ],
+    "maximum": [
+      "2aa24584453c69566ea5ce4d8ca048e6_22"
+    ],
+    "demands": [
+      "2aa24584453c69566ea5ce4d8ca048e6_22"
+    ],
+    "safe": [
+      "2aa24584453c69566ea5ce4d8ca048e6_23",
+      "2aa24584453c69566ea5ce4d8ca048e6_25",
+      "2aa24584453c69566ea5ce4d8ca048e6_26",
+      "2aa24584453c69566ea5ce4d8ca048e6_36",
+      "2aa24584453c69566ea5ce4d8ca048e6_38",
+      "2aa24584453c69566ea5ce4d8ca048e6_54"
+    ],
+    "finished": [
+      "2aa24584453c69566ea5ce4d8ca048e6_23"
+    ],
+    "sequence": [
+      "2aa24584453c69566ea5ce4d8ca048e6_23"
+    ],
+    "terminate": [
+      "2aa24584453c69566ea5ce4d8ca048e6_24"
+    ],
+    "terminates": [
+      "2aa24584453c69566ea5ce4d8ca048e6_24"
+    ],
+    "obtain": [
+      "2aa24584453c69566ea5ce4d8ca048e6_24"
+    ],
+    "needed": [
+      "2aa24584453c69566ea5ce4d8ca048e6_24"
+    ],
+    "unsafe": [
+      "2aa24584453c69566ea5ce4d8ca048e6_25",
+      "2aa24584453c69566ea5ce4d8ca048e6_38"
+    ],
+    "states": [
+      "2aa24584453c69566ea5ce4d8ca048e6_26"
+    ],
+    "algorithms": [
+      "2aa24584453c69566ea5ce4d8ca048e6_27"
+    ],
+    "single": [
+      "2aa24584453c69566ea5ce4d8ca048e6_27",
+      "2aa24584453c69566ea5ce4d8ca048e6_41"
+    ],
+    "claim": [
+      "2aa24584453c69566ea5ce4d8ca048e6_28"
+    ],
+    "assignment": [
+      "2aa24584453c69566ea5ce4d8ca048e6_28",
+      "2aa24584453c69566ea5ce4d8ca048e6_29"
+    ],
+    "does": [
+      "2aa24584453c69566ea5ce4d8ca048e6_29"
+    ],
+    "result": [
+      "2aa24584453c69566ea5ce4d8ca048e6_29"
+    ],
+    "formation": [
+      "2aa24584453c69566ea5ce4d8ca048e6_29"
+    ],
+    "must": [
+      "2aa24584453c69566ea5ce4d8ca048e6_30",
+      "2aa24584453c69566ea5ce4d8ca048e6_31",
+      "2aa24584453c69566ea5ce4d8ca048e6_51"
+    ],
+    "gets": [
+      "2aa24584453c69566ea5ce4d8ca048e6_31"
+    ],
+    "return": [
+      "2aa24584453c69566ea5ce4d8ca048e6_31"
+    ],
+    "finite": [
+      "2aa24584453c69566ea5ce4d8ca048e6_31"
+    ],
+    "amount": [
+      "2aa24584453c69566ea5ce4d8ca048e6_31"
+    ],
+    "matrix": [
+      "2aa24584453c69566ea5ce4d8ca048e6_32",
+      "2aa24584453c69566ea5ce4d8ca048e6_33",
+      "2aa24584453c69566ea5ce4d8ca048e6_36",
+      "2aa24584453c69566ea5ce4d8ca048e6_43"
+    ],
+    "need": [
+      "2aa24584453c69566ea5ce4d8ca048e6_33",
+      "2aa24584453c69566ea5ce4d8ca048e6_36"
+    ],
+    "complete": [
+      "2aa24584453c69566ea5ce4d8ca048e6_33",
+      "2aa24584453c69566ea5ce4d8ca048e6_52"
+    ],
+    "task": [
+      "2aa24584453c69566ea5ce4d8ca048e6_33"
+    ],
+    "work": [
+      "2aa24584453c69566ea5ce4d8ca048e6_34",
+      "2aa24584453c69566ea5ce4d8ca048e6_44",
+      "2aa24584453c69566ea5ce4d8ca048e6_45"
+    ],
+    "finish": [
+      "2aa24584453c69566ea5ce4d8ca048e6_34",
+      "2aa24584453c69566ea5ce4d8ca048e6_44",
+      "2aa24584453c69566ea5ce4d8ca048e6_45"
+    ],
+    "false": [
+      "2aa24584453c69566ea5ce4d8ca048e6_34",
+      "2aa24584453c69566ea5ce4d8ca048e6_44",
+      "2aa24584453c69566ea5ce4d8ca048e6_45"
+    ],
+    "step": [
+      "2aa24584453c69566ea5ce4d8ca048e6_34",
+      "2aa24584453c69566ea5ce4d8ca048e6_37",
+      "2aa24584453c69566ea5ce4d8ca048e6_44",
+      "2aa24584453c69566ea5ce4d8ca048e6_45"
+    ],
+    "true": [
+      "2aa24584453c69566ea5ce4d8ca048e6_34",
+      "2aa24584453c69566ea5ce4d8ca048e6_39",
+      "2aa24584453c69566ea5ce4d8ca048e6_44",
+      "2aa24584453c69566ea5ce4d8ca048e6_45"
+    ],
+    "safety": [
+      "2aa24584453c69566ea5ce4d8ca048e6_34",
+      "2aa24584453c69566ea5ce4d8ca048e6_39"
+    ],
+    "algorithm": [
+      "2aa24584453c69566ea5ce4d8ca048e6_34",
+      "2aa24584453c69566ea5ce4d8ca048e6_40",
+      "2aa24584453c69566ea5ce4d8ca048e6_41",
+      "2aa24584453c69566ea5ce4d8ca048e6_46",
+      "2aa24584453c69566ea5ce4d8ca048e6_47",
+      "2aa24584453c69566ea5ce4d8ca048e6_48",
+      "2aa24584453c69566ea5ce4d8ca048e6_50"
+    ],
+    "5instances": [
+      "2aa24584453c69566ea5ce4d8ca048e6_35"
+    ],
+    "snapshot": [
+      "2aa24584453c69566ea5ce4d8ca048e6_35"
+    ],
+    "time": [
+      "2aa24584453c69566ea5ce4d8ca048e6_35",
+      "2aa24584453c69566ea5ce4d8ca048e6_51"
+    ],
+    "content": [
+      "2aa24584453c69566ea5ce4d8ca048e6_36"
+    ],
+    "defined": [
+      "2aa24584453c69566ea5ce4d8ca048e6_36"
+    ],
+    "requesti": [
+      "2aa24584453c69566ea5ce4d8ca048e6_37",
+      "2aa24584453c69566ea5ce4d8ca048e6_38"
+    ],
+    "otherwise": [
+      "2aa24584453c69566ea5ce4d8ca048e6_37"
+    ],
+    "since": [
+      "2aa24584453c69566ea5ce4d8ca048e6_37"
+    ],
+    "allocationi": [
+      "2aa24584453c69566ea5ce4d8ca048e6_38",
+      "2aa24584453c69566ea5ce4d8ca048e6_44",
+      "2aa24584453c69566ea5ce4d8ca048e6_45"
+    ],
+    "needi": [
+      "2aa24584453c69566ea5ce4d8ca048e6_38"
+    ],
+    "allocated": [
+      "2aa24584453c69566ea5ce4d8ca048e6_38"
+    ],
+    "granted": [
+      "2aa24584453c69566ea5ce4d8ca048e6_39"
+    ],
+    "provide": [
+      "2aa24584453c69566ea5ce4d8ca048e6_40"
+    ],
+    "remove": [
+      "2aa24584453c69566ea5ce4d8ca048e6_41"
+    ],
+    "nodes": [
+      "2aa24584453c69566ea5ce4d8ca048e6_41"
+    ],
+    "corresponding": [
+      "2aa24584453c69566ea5ce4d8ca048e6_42"
+    ],
+    "five": [
+      "2aa24584453c69566ea5ce4d8ca048e6_46"
+    ],
+    "three": [
+      "2aa24584453c69566ea5ce4d8ca048e6_46"
+    ],
+    "often": [
+      "2aa24584453c69566ea5ce4d8ca048e6_48"
+    ],
+    "many": [
+      "2aa24584453c69566ea5ce4d8ca048e6_48",
+      "2aa24584453c69566ea5ce4d8ca048e6_49"
+    ],
+    "every": [
+      "2aa24584453c69566ea5ce4d8ca048e6_48"
+    ],
+    "usage": [
+      "2aa24584453c69566ea5ce4d8ca048e6_48"
+    ],
+    "able": [
+      "2aa24584453c69566ea5ce4d8ca048e6_49"
+    ],
+    "tell": [
+      "2aa24584453c69566ea5ce4d8ca048e6_49"
+    ],
+    "caused": [
+      "2aa24584453c69566ea5ce4d8ca048e6_49"
+    ],
+    "automatically": [
+      "2aa24584453c69566ea5ce4d8ca048e6_50"
+    ],
+    "recovery": [
+      "2aa24584453c69566ea5ce4d8ca048e6_50"
+    ],
+    "detects": [
+      "2aa24584453c69566ea5ce4d8ca048e6_50"
+    ],
+    "abort": [
+      "2aa24584453c69566ea5ce4d8ca048e6_51"
+    ],
+    "termination": [
+      "2aa24584453c69566ea5ce4d8ca048e6_51"
+    ],
+    "required": [
+      "2aa24584453c69566ea5ce4d8ca048e6_52"
+    ],
+    "whether": [
+      "2aa24584453c69566ea5ce4d8ca048e6_52"
+    ],
+    "still": [
+      "2aa24584453c69566ea5ce4d8ca048e6_52"
+    ],
+    "issues": [
+      "2aa24584453c69566ea5ce4d8ca048e6_52"
+    ],
+    "preempted": [
+      "2aa24584453c69566ea5ce4d8ca048e6_53"
+    ],
+    "preemption": [
+      "2aa24584453c69566ea5ce4d8ca048e6_53"
+    ],
+    "eliminate": [
+      "2aa24584453c69566ea5ce4d8ca048e6_53"
+    ],
+    "soln": [
+      "2aa24584453c69566ea5ce4d8ca048e6_54"
+    ],
+    "rollback": [
+      "2aa24584453c69566ea5ce4d8ca048e6_54"
+    ],
+    "either": [
+      "2aa24584453c69566ea5ce4d8ca048e6_54"
+    ],
+    "overhead": [
+      "2aa24584453c69566ea5ce4d8ca048e6_54"
+    ],
+    "added": [
+      "2aa24584453c69566ea5ce4d8ca048e6_54"
+    ]
+  },
+  "chunk_to_concepts": {
+    "2aa24584453c69566ea5ce4d8ca048e6_0": [
+      "deadlocks"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_1": [
+      "wait",
+      "process",
+      "another",
+      "example",
+      "disk",
+      "deadlocks",
+      "deadlock",
+      "processes"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_2": [
+      "process",
+      "never",
+      "deadlocks",
+      "deadlocked",
+      "waiting",
+      "event",
+      "occur",
+      "typically"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_3": [
+      "system",
+      "release",
+      "model",
+      "oresource",
+      "types",
+      "oeach",
+      "resource",
+      "type"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_4": [
+      "process",
+      "resource",
+      "deadlock",
+      "hold",
+      "holding",
+      "characterization",
+      "arise",
+      "four"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_5": [
+      "waiting",
+      "held",
+      "resource",
+      "process",
+      "circular",
+      "exists",
+      "processes",
+      "chain"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_6": [
+      "edge",
+      "resource",
+      "types",
+      "consisting",
+      "system",
+      "directed",
+      "allocation",
+      "graph"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_7": [
+      "resource",
+      "instance",
+      "allocation",
+      "graph",
+      "process",
+      "type",
+      "instances",
+      "requests"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_8": [
+      "graph",
+      "cycle",
+      "deadlock"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_9": [
+      "resource",
+      "allocation",
+      "graph",
+      "deadlock"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_10": [
+      "deadlock",
+      "graph",
+      "contains",
+      "resource",
+      "type",
+      "basic",
+      "facts",
+      "cycles"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_11": [
+      "deadlocks",
+      "system",
+      "never",
+      "enter",
+      "deadlock",
+      "state",
+      "methods",
+      "handling"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_12": [
+      "system",
+      "deadlock",
+      "management",
+      "prevention",
+      "design",
+      "deadlocks",
+      "never",
+      "occur"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_13": [
+      "system",
+      "requires",
+      "additional",
+      "appropriate",
+      "information",
+      "regarding",
+      "overall",
+      "potential"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_14": [
+      "deadlock",
+      "processes",
+      "detection",
+      "allow",
+      "resources",
+      "management",
+      "possibility",
+      "determine"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_15": [
+      "resources",
+      "deadlock",
+      "sharable",
+      "hold",
+      "process",
+      "prevention",
+      "conditions",
+      "reusable"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_16": [
+      "resources",
+      "process",
+      "make",
+      "request",
+      "after",
+      "releasing",
+      "current",
+      "resource"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_17": [
+      "resources",
+      "process",
+      "waiting",
+      "preempt",
+      "check",
+      "allocate",
+      "deadlock",
+      "prevention"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_18": [
+      "requesting",
+      "process",
+      "both",
+      "hold",
+      "made",
+      "wait"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_19": [
+      "resource",
+      "types",
+      "resources",
+      "ordering",
+      "request",
+      "type",
+      "deadlock",
+      "prevention"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_20": [
+      "process",
+      "request",
+      "resource",
+      "initially",
+      "number",
+      "instances",
+      "type",
+      "after"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_21": [
+      "deadlock",
+      "avoidance",
+      "requires",
+      "available",
+      "number",
+      "resources",
+      "resource",
+      "allocation"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_22": [
+      "maximum",
+      "demands",
+      "processes"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_23": [
+      "resources",
+      "safe",
+      "state",
+      "system",
+      "available",
+      "finished",
+      "exists",
+      "sequence"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_24": [
+      "terminate",
+      "terminates",
+      "obtain",
+      "needed",
+      "resources"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_25": [
+      "state",
+      "system",
+      "deadlock",
+      "unsafe",
+      "safe",
+      "possibility",
+      "deadlocks",
+      "deadlocked"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_26": [
+      "safe",
+      "states",
+      "system",
+      "state",
+      "process",
+      "resource",
+      "deadlock",
+      "avoidance"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_27": [
+      "resource",
+      "type",
+      "avoidance",
+      "algorithms",
+      "single",
+      "instance",
+      "allocation",
+      "graph"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_28": [
+      "edge",
+      "resource",
+      "request",
+      "claim",
+      "process",
+      "assignment",
+      "allocation",
+      "graph"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_29": [
+      "assignment",
+      "does",
+      "result",
+      "formation",
+      "cycle",
+      "resource",
+      "allocation",
+      "graph"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_30": [
+      "resource",
+      "process",
+      "system",
+      "number",
+      "instances",
+      "type",
+      "must",
+      "resources"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_31": [
+      "process",
+      "must",
+      "wait",
+      "gets",
+      "resources",
+      "return",
+      "finite",
+      "amount"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_32": [
+      "resource",
+      "available",
+      "instances",
+      "type",
+      "number",
+      "matrix",
+      "process",
+      "allocation"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_33": [
+      "need",
+      "instances",
+      "resource",
+      "type",
+      "matrix",
+      "process",
+      "complete",
+      "task"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_34": [
+      "work",
+      "finish",
+      "number",
+      "false",
+      "step",
+      "true",
+      "safety",
+      "algorithm"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_35": [
+      "instances",
+      "example",
+      "processes",
+      "resource",
+      "types",
+      "5instances",
+      "snapshot",
+      "time"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_36": [
+      "need",
+      "example",
+      "content",
+      "matrix",
+      "defined",
+      "allocation",
+      "system",
+      "safe"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_37": [
+      "process",
+      "requesti",
+      "resource",
+      "request",
+      "step",
+      "otherwise",
+      "since",
+      "available"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_38": [
+      "requesti",
+      "available",
+      "allocationi",
+      "needi",
+      "safe",
+      "resources",
+      "allocated",
+      "unsafe"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_39": [
+      "request",
+      "available",
+      "safety",
+      "granted",
+      "example",
+      "check",
+      "true",
+      "allocation"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_40": [
+      "deadlock",
+      "detection",
+      "system",
+      "state",
+      "algorithm",
+      "allow",
+      "enter",
+      "provide"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_41": [
+      "graph",
+      "resource",
+      "remove",
+      "nodes",
+      "algorithm",
+      "cycle",
+      "single",
+      "instance"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_42": [
+      "graph",
+      "example",
+      "resource",
+      "allocation",
+      "corresponding",
+      "wait"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_43": [
+      "instances",
+      "resource",
+      "type",
+      "available",
+      "process",
+      "request",
+      "allocation",
+      "matrix"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_44": [
+      "step",
+      "work",
+      "finish",
+      "allocationi",
+      "false",
+      "true",
+      "deadlock",
+      "detection"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_45": [
+      "step",
+      "finish",
+      "work",
+      "false",
+      "allocationi",
+      "true",
+      "system",
+      "deadlock"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_46": [
+      "instances",
+      "example",
+      "detection",
+      "algorithm",
+      "five",
+      "processes",
+      "three",
+      "resource"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_47": [
+      "requests",
+      "resources",
+      "processes",
+      "example",
+      "detection",
+      "algorithm",
+      "additional",
+      "instance"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_48": [
+      "often",
+      "deadlock",
+      "many",
+      "processes",
+      "every",
+      "detection",
+      "algorithm",
+      "usage"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_49": [
+      "resource",
+      "graph",
+      "able",
+      "tell",
+      "many",
+      "deadlocked",
+      "processes",
+      "caused"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_50": [
+      "deadlock",
+      "automatically",
+      "processes",
+      "recovery",
+      "detection",
+      "algorithm",
+      "detects",
+      "exists"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_51": [
+      "processes",
+      "process",
+      "abort",
+      "deadlocked",
+      "time",
+      "must",
+      "deadlock",
+      "termination"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_52": [
+      "processes",
+      "process",
+      "required",
+      "complete",
+      "whether",
+      "still",
+      "deadlocked",
+      "issues"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_53": [
+      "resources",
+      "processes",
+      "preempted",
+      "process",
+      "resource",
+      "preemption",
+      "eliminate",
+      "deadlocks"
+    ],
+    "2aa24584453c69566ea5ce4d8ca048e6_54": [
+      "process",
+      "soln",
+      "rollback",
+      "either",
+      "safe",
+      "state",
+      "overhead",
+      "added"
+    ]
+  }
+}

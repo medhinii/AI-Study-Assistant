@@ -1,0 +1,497 @@
+[
+  {
+    "page_content": "Deadlocks\n1",
+    "metadata": {
+      "page_number": 1,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_0"
+    }
+  },
+  {
+    "page_content": "Deadlocks\nDeadlock : A set of processes is deadlocked if each process in the set is  waiting for an \nevent that only another process in the set can cause.\n➢Example\n◦System has 2 disk drives.\n◦P1 and P2 each hold one disk drive and each needs another one.\n➢Example\n◦semaphores A and B, initialized to 1\n  P0   \n P1\nwait (A); \nwait(B);\nwait (B); \nwait(A);\n2",
+    "metadata": {
+      "page_number": 2,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_1"
+    }
+  },
+  {
+    "page_content": "Deadlocks…\n•A process is deadlocked if it is waiting for an event that will never occur.\n◦Typically, more than one process will be involved in a deadlock.\n•A process is indefinitely postponed if it is delayed repeatedly over a long period \nof time while the attention of the system is given to other processes,\n◦i.e. the process is ready to proceed but never gets the CPU.\n3",
+    "metadata": {
+      "page_number": 3,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_2"
+    }
+  },
+  {
+    "page_content": "System Model\noResource types\n▪R1, R2,….Rn\noEach resource type Ri has Wi  instances\noAssume reusable resources\n▪request -> use -> release\noRequest & release are system calls.(open/close file, alloc/free memory location \netc). It can be accomplished with wait and signal operations on semaphore.\n4",
+    "metadata": {
+      "page_number": 4,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_3"
+    }
+  },
+  {
+    "page_content": "Deadlock Characterization\nDeadlock can arise if four conditions hold simultaneously.\n◦Mutual exclusion:  only one process at a time can use a resource.\n◦Hold and wait:  a process holding at least one resource is waiting to acquire additional resources held \nby other processes.\n◦No preemption:  a resource can be released only voluntarily by the process holding it, after that \nprocess has completed its task.",
+    "metadata": {
+      "page_number": 5,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_4"
+    }
+  },
+  {
+    "page_content": "process has completed its task.\n◦Circular wait:  there exists a set {P0, P1, …, Pn} of waiting processes such that P0 is waiting for a \nresource that is held by P1, P1 is waiting for a resource that is held by P2 and so on. …, Pn–1 is waiting \nfor a resource that is held by Pn, and Pn is waiting for a resource that is held by P0.  i.e  A circular chain \nof processes exists in which each process waits for one or more resources held by the next process in \nthe chain.\n5",
+    "metadata": {
+      "page_number": 5,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_5"
+    }
+  },
+  {
+    "page_content": "Resource-Allocation Graph\n▪A set of vertices V and a set of edges E.\nV is partitioned into two types:\n◦P = {P1, P2, …, Pn}, the set consisting of all the processes in the system.\n◦R = {R1, R2, …, Rm}, the multi-set consisting of all resource types in the system.\nRequest edge – directed edge Pi → Rj\nAssignment edge – directed edge Rj → Pi\n6",
+    "metadata": {
+      "page_number": 6,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_6"
+    }
+  },
+  {
+    "page_content": "Resource-Allocation Graph…\n▪Process\n▪Resource Type with 4 instances\n▪Pi requests an instance of Rj\n▪Pi is holding an instance of Rj\n7",
+    "metadata": {
+      "page_number": 7,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_7"
+    }
+  },
+  {
+    "page_content": "Graph With A Cycle But No Deadlock\n8",
+    "metadata": {
+      "page_number": 8,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_8"
+    }
+  },
+  {
+    "page_content": "Resource Allocation Graph With A \nDeadlock\n9",
+    "metadata": {
+      "page_number": 9,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_9"
+    }
+  },
+  {
+    "page_content": "Basic Facts\nIf graph contains no cycles\n◦no deadlock.\nIf graph contains a cycle\n◦if only one instance per resource type, then deadlock.\n◦if several instances per resource type, possibility of deadlock.\n10",
+    "metadata": {
+      "page_number": 10,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_10"
+    }
+  },
+  {
+    "page_content": "Methods for handling deadlocks\n•Ensure that the system will never enter a deadlock state. Use a \nProtocol for prevent or avoid deadlocks.\n•Allow the system to potentially enter a deadlock state, detect it and \nthen recover.\n•Ignore the problem and pretend that deadlocks never occur in the \nsystem;\noUsed by many operating systems, e.g. UNIX\n11",
+    "metadata": {
+      "page_number": 11,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_11"
+    }
+  },
+  {
+    "page_content": "Deadlock Management\n◦Prevention\n◦Design the system in such a way that deadlocks can never occur. (by \nconstraining how requests for resources can be made in the system)\n◦Provides set of methods for ensuring that at least one of the necessary \nconditions cannot hold.\n◦Avoidance\n◦The system dynamically considers every request and decides whether it is \nsafe to grant it at this point.\n◦The system requires additional appropriate information  regarding the",
+    "metadata": {
+      "page_number": 12,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_12"
+    }
+  },
+  {
+    "page_content": "◦The system requires additional appropriate information  regarding the \noverall potential use of each resource for each process.\n12",
+    "metadata": {
+      "page_number": 12,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_13"
+    }
+  },
+  {
+    "page_content": "Deadlock Management…\n◦Detection\n◦Allow possibility of deadlock, determine if deadlock has \noccurred and which processes and resources are involved.\n◦Recovery\n◦After detection, clear the problem, allow processes to complete \nand resources to be reused. May involve destroying and \nrestarting processes.\n13",
+    "metadata": {
+      "page_number": 13,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_14"
+    }
+  },
+  {
+    "page_content": "Deadlock Prevention\n▪If any one of the conditions for deadlock (with reusable resources) is denied, deadlock is impossible.\n▪Mutual Exclusion  \n◦no-issue for sharable resources\n◦cannot deny this for non-sharable resources.\n▪Hold and Wait - guarantee that when a process requests a resource, it does not hold other resources.\n◦Force each process to acquire all the required resources at once (before execution).",
+    "metadata": {
+      "page_number": 14,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_15"
+    }
+  },
+  {
+    "page_content": "◦The process will make a new request for resources after releasing the current set of resources.  \n◦Low resource utilization.\n◦Starvation is possible.\n14",
+    "metadata": {
+      "page_number": 14,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_16"
+    }
+  },
+  {
+    "page_content": "Deadlock Prevention…\n▪No Preemption\n◦Preempt the resources from process.\n◦Preempted resources are added to the list of resources for which the process is waiting.\n◦Process will be restarted only when it can regain its old resources as well as the new ones that it is requesting.\n◦When a process request for some resources, first check if its available, allocate if so. Otherwise check if its \nallocated to the waiting process. If so preempt the resources of a waiting process and allocate to the",
+    "metadata": {
+      "page_number": 15,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_17"
+    }
+  },
+  {
+    "page_content": "requesting process. If both don’t hold, the requesting process is made to wait.\n15",
+    "metadata": {
+      "page_number": 15,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_18"
+    }
+  },
+  {
+    "page_content": "Deadlock Prevention…\n▪Circular Wait\n◦Impose a total ordering of all resource types.\n◦Require that processes request resources in increasing order of enumeration; if a resource of type N is held, \nprocess can only request resources of types > N.\n◦Let R = { R1, R2,.... Rm } be resource types. Assign each resource type a unique natural number, which allows to \ncompare between two resources and to determine whether one proceeds another in ordering.  F: R->N.",
+    "metadata": {
+      "page_number": 16,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_19"
+    }
+  },
+  {
+    "page_content": "◦Initially process can request any number of instances of a resource type.\n◦After that process can request a resource Rj only if F(Rj)> F(Ri).\n◦In this way circular wait is prevented.\n◦i.e F(R0)< F(R1) < F(R2)...<F(Rn) < F(R0) is impossible.\n16",
+    "metadata": {
+      "page_number": 16,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_20"
+    }
+  },
+  {
+    "page_content": "Deadlock Avoidance\n•Requires that the system has some additional a priori information \navailable.\n•Simplest and most useful model requires that each process declare the maximum \nnumber of resources of each type that it may need.\n•The deadlock-avoidance algorithm dynamically examines the resource-allocation state \nto ensure that there can never be a circular-wait condition.\n•Resource-allocation state is defined by the number of available and allocated resources,",
+    "metadata": {
+      "page_number": 17,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_21"
+    }
+  },
+  {
+    "page_content": "and the maximum demands of the processes.\n17",
+    "metadata": {
+      "page_number": 17,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_22"
+    }
+  },
+  {
+    "page_content": "Safe State\n•System is in safe state if there exists a sequence <P1, P2, …, Pn> of ALL the  processes  is the \nsystem such that  for each Pj, the resources that Pj can still request can be satisfied by currently \navailable resources + resources held by all the Pi, with i< j.\n•That is:\n• If Pj resource are not immediately available, then Pj can wait until all Pi have finished.\n• When Pi is finished, Pj can obtain needed resources, execute, return allocated resources, and \nterminate.",
+    "metadata": {
+      "page_number": 18,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_23"
+    }
+  },
+  {
+    "page_content": "terminate.\n• When Pj terminates, Pj +1 can obtain its needed resources, and so on.\n18",
+    "metadata": {
+      "page_number": 18,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_24"
+    }
+  },
+  {
+    "page_content": "Safe State…\n•System is in a safe state ⇒ no deadlocks\n•If system is deadlocked ⇒ state is unsafe\n•System is in unsafe state ⇒ possibility of deadlock.\n• OS cannot prevent processes from requesting resources in a sequence that \nleads to deadlock\n•Deadlock Avoidance\n• Ensures system will never enter an unsafe state.\n• Thereby avoids the possibility of deadlock.\n19",
+    "metadata": {
+      "page_number": 19,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_25"
+    }
+  },
+  {
+    "page_content": "Deadlock Avoidance - Concepts\nKey Ideas:\n◦Initially the system is in a safe state\n◦Whenever a process requests an available resource, system will \nallocate resource immediately only if the resulting state is still safe!\n◦Otherwise, requesting process must wait.\nWhy does this work?\n◦By induction, all reachable states are safe states\n◦By definition, all safe states are not deadlocked\n20",
+    "metadata": {
+      "page_number": 20,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_26"
+    }
+  },
+  {
+    "page_content": "Avoidance algorithms\nSingle instance of a resource type\n◦Use a resource-allocation graph\nMultiple instances of a resource type\n◦ Use the banker’s algorithm\n21",
+    "metadata": {
+      "page_number": 21,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_27"
+    }
+  },
+  {
+    "page_content": "Resource-Allocation Graph\n◦Claim edge: Pi → Rj indicates that process Pi may request resource Rj; \nrepresented by a dashed line.\n◦Claim edge converts to request edge when a process requests a resource.\n◦When a resource is released by a process, assignment edge reconverts to \nclaim edge.\n◦Resources must be claimed a priori in the system.\n◦The request can be granted only if converting the request edge to an \nassignment edge does not result in the formation of a cycle  in the resource",
+    "metadata": {
+      "page_number": 22,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_28"
+    }
+  },
+  {
+    "page_content": "assignment edge does not result in the formation of a cycle  in the resource \nallocation graph.\n◦If request assignment does not result in the formation of a cycle in the resource \nallocation graph - safe state, else unsafe state.\n22",
+    "metadata": {
+      "page_number": 22,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_29"
+    }
+  },
+  {
+    "page_content": "Banker’s Algorithm\n•Used for multiple instances of each resource type.\n•When a new process enters the system, it must declare the maximum \nnumber of instances of each resource type that it may need.\n•This number should not exceed the number of resources in a system.\n•When a process requests a resource, the OS checks if the allocation leaves \nthe system in a safe state. If so, the OS allocates the resources, otherwise the \nprocess must wait.",
+    "metadata": {
+      "page_number": 23,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_30"
+    }
+  },
+  {
+    "page_content": "process must wait.\n•When a process gets all its resources, it must return them in a finite amount \nof time.\n23",
+    "metadata": {
+      "page_number": 23,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_31"
+    }
+  },
+  {
+    "page_content": "Data Structures for the Banker’s \nAlgorithm\nLet n = number of processes and m = number of resource types.\n◦Available:  Vector of length m. If Available[j] = k, there are k instances of resource \ntype Rj available.\n◦Max: n × m matrix. If Max[i,j] = k, then process Pi may request at most k instances \nof resource type Rj.\n◦Allocation: n × m matrix. If Allocation[i,j] = k, then process Pi is currently allocated \nk instances of resource type Rj.",
+    "metadata": {
+      "page_number": 24,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_32"
+    }
+  },
+  {
+    "page_content": "k instances of resource type Rj.\n◦Need: n × m matrix. If Need[i,j] = k, then process Pi may need k more instances of \nresource type Rj to complete its task.\nNeed[i,j]  = Max[i,j] - Allocation[i,j]\n24",
+    "metadata": {
+      "page_number": 24,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_33"
+    }
+  },
+  {
+    "page_content": "Safety Algorithm\n1.\nLet Work and Finish be vectors of length m(number of resources) and n(number of processes), \nrespectively.  Initialize\n \nWork := Available\n \nFinish[i] := false for i = 0,1,2,…,n-1.\n2.\nFind an i  (i.e. process Pi) such that both:\n \n(a) Finish[i] = false\n \n(b) Needi <= Work\n \nIf no such i exists, go to step 4.\n3.\nWork := Work + Allocationi\n \nFinish[i] := true\n \ngo to step 2\n4.\nIf Finish[i] = true for all i, then the system is in a safe state.\n25",
+    "metadata": {
+      "page_number": 25,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_34"
+    }
+  },
+  {
+    "page_content": "Example\n▪5 processes P0  through P4; \n      3 resource types:\n              A (10 instances),  B (5instances), and C (7 instances)\n Snapshot at time T0:\n  \n \nAllocation \n      Max \nAvailable\n  \n \nA B C \n       A B C \nA B C\n  \nP0 \n0 1 0 \n         7 5 3 \n3 3 2\n  \n P1 \n2 0 0 \n        3 2 2  \n  \n P2 \n3 0 2 \n        9 0 2\n  \n P3 \n2 1 1 \n        2 2 2\n  \n P4 \n0 0 2 \n         4 3 3  \n \n26",
+    "metadata": {
+      "page_number": 26,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_35"
+    }
+  },
+  {
+    "page_content": "Example...\nThe content of the matrix Need is defined to be Max – Allocation\n  \n \nNeed\n  \n \nA B C\n  \n P0 \n7 4 3 \n  \n P1 \n1 2 2 \n  \n P2 \n6 0 0 \n  \n P3 \n0 1 1\n  \n P4 \n4 3 1 \nThe system is in a safe state since the sequence < P1, P3, P0, P2, P4> satisfies safety criteria\n27",
+    "metadata": {
+      "page_number": 27,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_36"
+    }
+  },
+  {
+    "page_content": "Resource-Request Algorithm for Process Pi\nRequesti = request vector for process Pi.  If Requesti[j] = k, then process Pi wants k instances of resource type Rj.\n1.\nIf Requesti ≤ Needi, go to step 2. Otherwise, raise error condition, since process has exceeded its \nmaximum claim.\n2.\nIf Requesti ≤ Available, go to step 3. Otherwise, Pi must wait since resources are not available.\n3.\nPretend to allocate requested resources to Pi  by modifying the state as follows:",
+    "metadata": {
+      "page_number": 28,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_37"
+    }
+  },
+  {
+    "page_content": "Available := Available - Requesti;\n    \n \nAllocationi:= Allocationi+ Requesti;\n    \n \nNeedi := Needi - Requesti;\n4.\nIf safe ⇒ resources are allocated to Pi.\n5.\nIf unsafe ⇒ Pi must wait and the old resource-allocation state is restored.\n28",
+    "metadata": {
+      "page_number": 28,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_38"
+    }
+  },
+  {
+    "page_content": "Example:  P1 Request (1,0,2)\nCheck that Request  Available (that is, (1,0,2)  (3,3,2)  true\n  \n \nAllocation \n Need \nAvailable\n  \n \nA B C \n A B C \nA B C \n  \nP0.    0 1 0 \n  7 4 3 \n2 3 0\n  \nP1    3 0 2           0 2 0 \n  \nP2 \n3 0 2 \n   6 0 0 \n  \nP3 \n2 1 1 \n    0 1 1\n  \nP4 \n0 0 2 \n    4 3 1 \nExecuting safety algorithm shows that sequence < P1, P3, P0, P2, P4> satisfies safety requirement\nCan request for (3,3,0) by P4 be granted?\nCan request for (0,2,0) by P0 be granted?\n29",
+    "metadata": {
+      "page_number": 29,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_39"
+    }
+  },
+  {
+    "page_content": "Deadlock Detection\n•Allow system to enter deadlock state\n•Provide an Algorithm that examines the state of the system to \ndetermine whether a deadlock has occurred (deadlock detection)\n•Note: Detection scheme requires overhead that includes  the \nruntime costs of maintaining the necessary information and \nexecuting the detection algorithm.\n30",
+    "metadata": {
+      "page_number": 30,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_40"
+    }
+  },
+  {
+    "page_content": "Single Instance of Each Resource Type\nMaintain wait-for graph\n◦Remove the resource nodes from RA graph. So now nodes are only \nprocesses\n◦Remove the corresponding edges. i.e Instead of Pi->Rq & Rq->Pj for some \nresource Rq, use Pi → Pj if Pi is waiting for Pj.\nPeriodically invoke an algorithm that searches for a cycle in the graph.\nAn algorithm to detect a cycle in a graph requires an order of n2 operations, \nwhere n is the number of vertices in the graph.\n31",
+    "metadata": {
+      "page_number": 31,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_41"
+    }
+  },
+  {
+    "page_content": "Example\n32\nResource-Allocation Graph\nCorresponding wait-for graph",
+    "metadata": {
+      "page_number": 32,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_42"
+    }
+  },
+  {
+    "page_content": "Several Instances of a Resource Type\nData Structures\n◦Available: Vector of length m. If Available[j] = k, there are k \ninstances of resource type Rj available.\n◦Allocation: n × m matrix. If Allocation[i,j] = k, then process Pi is \ncurrently allocated k instances of resource type Rj.\n◦Request : An n × m matrix indicates the current request of each \nprocess. If Request [i,j] = k, then process Pi is requesting k more \ninstances of resource type Rj .\n33",
+    "metadata": {
+      "page_number": 33,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_43"
+    }
+  },
+  {
+    "page_content": "Deadlock Detection Algorithm\nStep 1: Let Work and Finish be vectors of length m and n, respectively. Initialize:\n(a) Work = Available\n(b) For i = 1,2, …, n, if Allocationi  0, then \nFinish[i] = false; otherwise, Finish[i] = true\nStep 2: Find an index i such that both:\n(a) Finish[i] == false\n(b) Requesti  Work\nIf no such i exists, go to Step 4.\nStep 3: Work := Work + Allocationi \n \nFinish[i] := true\n \ngo to Step 2",
+    "metadata": {
+      "page_number": 34,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_44"
+    }
+  },
+  {
+    "page_content": "Step 3: Work := Work + Allocationi \n \nFinish[i] := true\n \ngo to Step 2\nStep 4: If Finish[i] = false for some i, 1 ≤ i ≤ n, then the system is in a deadlock state.  Moreover, if Finish[i] = false, the\nPi is deadlocked.\nO(m x n2 )\n34",
+    "metadata": {
+      "page_number": 34,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_45"
+    }
+  },
+  {
+    "page_content": "Example of Detection Algorithm\nFive processes P0 through P4; three resource types \nA (7 instances), B (2 instances), and C (6 instances)\nSnapshot at time T0:\n  \n \n Allocation \nRequest \nAvailable\n  \n \nA B C \n  A B C \nA B C\n             P0 \n        0 1 0        0 0 0 0 0 0\n            P1 \n           2 0 0 \n2 0 2\n            P2 \n        3 0 3        0 0 0 \n            P3 \n \n2 1 1 \n1 0 0 \n             P4 \n \n0 0 2 \n0 0 2\nSequence <P0, P2, P3, P1, P4> will result in Finish[i] = true for all i\n35",
+    "metadata": {
+      "page_number": 35,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_46"
+    }
+  },
+  {
+    "page_content": "Example of Detection Algorithm…\nP2 requests an additional instance of type C\n \n \n \nRequest\n \n \n \nA B C\n \n \n P0 \n0 0 0\n \n \n P1 \n2 0 2\n \n \n P2 \n0 0 1\n \n \n P3 \n1 0 0 \n \n \n P4 \n0 0 2\nState of system?\n36\nCan reclaim resources held by process P0, but insufficient resources to fulfill other \nprocesses; requests\nDeadlock exists, consisting of processes P1, P2, P3, and P4",
+    "metadata": {
+      "page_number": 36,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_47"
+    }
+  },
+  {
+    "page_content": "Detection-Algorithm Usage\n➢When, and how often to invoke depends on:\n◦How often a deadlock is likely to occur?\n◦How many processes/threads will be affected?\n➢How often?\n◦Every time a request for allocation cannot be granted immediately\n◦Allows os to detect set of deadlocked processes and process that “caused” deadlock.  Extra overhead.\n◦Every hour or whenever CPU utilization drops. With arbitrary invocation there may be many cycles in the",
+    "metadata": {
+      "page_number": 37,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_48"
+    }
+  },
+  {
+    "page_content": "resource graph and we would not be able to tell which of the many deadlocked processes “caused” the \ndeadlock.\n37",
+    "metadata": {
+      "page_number": 37,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_49"
+    }
+  },
+  {
+    "page_content": "Recovery from Deadlock\n➢When the detection algorithm detects that deadlock exists either \nuser can deal with it manually or OS automatically recover from \ndeadlock.\nTwo options to break deadlock automatically\n◦Abort one or more processes\n◦Preempt some resources from one or more deadlocked processes.\n38",
+    "metadata": {
+      "page_number": 38,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_50"
+    }
+  },
+  {
+    "page_content": "Process Termination\n➢Abort all deadlocked processes\n◦Very expensive as processes may have computed for a long time & this must be discarded and recompute it later.\n➢Abort one process at a time until the deadlock cycle eliminated\n◦Adds up overhead, since after each process is aborted, a deadlock-detection algorithm must be invoked to determine \nwhether any processes are still deadlocked.\n➢Issues with aborting the processes",
+    "metadata": {
+      "page_number": 39,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_51"
+    }
+  },
+  {
+    "page_content": "whether any processes are still deadlocked.\n➢Issues with aborting the processes\n◦If the process is in mid of printing/updating file then OS must reset the values before proceeding with next request.\n◦Factors to be considered while terminating the processes\n◦Priority of the processes\n◦How many and what types of resources are used/ required to complete?\n◦Foreground process/ Background process?\n◦How long the process has executed and how much longer is required to complete the task.\n39",
+    "metadata": {
+      "page_number": 39,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_52"
+    }
+  },
+  {
+    "page_content": "Resource Preemption\n•To eliminate deadlocks, preempt some of resources and give these resources to other processes until the deadlock\ncycle is broken.\n•3 Issues need to be addressed\noSelecting a victim: Which resources and which processes are to be preempted? \n•Soln: Select the one to minimize the cost. Parameters can be number of resources held, How long the process has \ncomputed etc.\noRollback: What should be done with the process for which resources are preempted?",
+    "metadata": {
+      "page_number": 40,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_53"
+    }
+  },
+  {
+    "page_content": "•Soln: Either rollback the process from safe state (overhead added to OS) or total rollback (abort the process and \nthen restart it)\noStarvation: How can we guarantee that resources will not always be preempted from the same process?\n•Soln: Include the number of rollbacks in the cost factor while selecting the victim.\n40",
+    "metadata": {
+      "page_number": 40,
+      "source": "L21-_24_Deadlock.pdf",
+      "document_id": "2aa24584453c69566ea5ce4d8ca048e6",
+      "chunk_id": "2aa24584453c69566ea5ce4d8ca048e6_54"
+    }
+  }
+]

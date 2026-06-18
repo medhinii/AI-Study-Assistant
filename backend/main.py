@@ -3,8 +3,10 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from rag import process_pdf, ask_question, summarize_uploaded_documents
+
 from youtube_notes import generate_notes
+from rag import generate_quiz
+from rag import process_pdf, ask_question, summarize_uploaded_documents, generate_quiz
 
 app = FastAPI(title="Explainable AI Study Assistant")
 
@@ -24,7 +26,10 @@ class QuestionRequest(BaseModel):
 
 class YouTubeRequest(BaseModel):
     url: str
-
+class QuizRequest(BaseModel):
+    document_id: str
+class QuizRequest(BaseModel):
+    document_id: str
 
 @app.get("/")
 def root():
@@ -64,3 +69,7 @@ def summarize_pdf(data: QuestionRequest):
 @app.post("/youtube-notes")
 def youtube_notes(data: YouTubeRequest):
     return generate_notes(data.url)
+
+@app.post("/generate-quiz")
+def create_quiz(data: QuizRequest):
+    return generate_quiz(data.document_id)
