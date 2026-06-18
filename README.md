@@ -1,177 +1,217 @@
-# Explainable AI Study Assistant
+# Explainable Multi-Document RAG System
 
-An AI-powered study platform that transforms PDFs and YouTube videos into structured study material. The system uses Retrieval-Augmented Generation (RAG) to provide source-backed answers, generate detailed notes, and help students learn more effectively through explainable AI.
+## Overview
 
----
+Explainable Multi-Document RAG System is an AI-powered study assistant that allows users to upload PDFs, ask questions, generate study notes, create quizzes, and extract notes from YouTube videos. The system combines Hybrid Retrieval, GraphRAG-inspired concept retrieval, Cross-Encoder reranking, and local Large Language Models to provide accurate, explainable, and source-backed responses.
 
-## Features
-
-### PDF Learning Assistant
-
-* Upload PDF study material
-* Extract and process document content
-* Ask questions from uploaded PDFs
-* Get source-backed answers
-* Generate detailed study notes
-* Support for multiple PDFs
-* Persistent document storage
-
-### YouTube Learning Assistant
-
-* Generate notes from YouTube videos
-* Extract video transcripts automatically
-* Create structured study material
-* Summarize key concepts
-* Generate exam-oriented notes
-
-### Explainable AI Features
-
-* Answers generated only from uploaded content
-* Source references for transparency
-* Retrieval-based question answering
-* Reduced hallucinations using RAG
-
-### Smart History System
-
-* PDF history tracking
-* YouTube history tracking
-* Restore previous learning sessions
-* Preserve generated notes
-* Preserve question-answer history
-
-### User Experience
-
-* Modern React interface
-* Download generated notes
-* Scrollable note viewer
-* Session persistence using local storage
-* Responsive design
+Unlike traditional RAG systems that rely only on vector search, this project integrates semantic retrieval, keyword retrieval, concept-based retrieval, and reranking to improve answer quality while maintaining transparency through source citations.
 
 ---
 
-## Tech Stack
+## Key Features
 
-### Frontend
+### PDF Question Answering
+
+* Upload multiple PDFs
+* Ask natural language questions
+* Answers generated only from the selected document
+* Source-backed responses with page references
+
+### Hybrid Retrieval Pipeline
+
+* Semantic Search using ChromaDB
+* BM25 Keyword Search
+* GraphRAG-inspired Concept Retrieval
+* Cross-Encoder Reranking
+
+### Explainable AI
+
+* Displays source chunks used to generate answers
+* Shows page references from uploaded PDFs
+* Reduces hallucinations by grounding responses in retrieved context
+
+### Automated Study Notes
+
+* Generates structured study notes from PDFs
+* Includes:
+
+  * Summary
+  * Important Concepts
+  * Detailed Explanation
+  * Key Terms
+  * Exam Notes
+
+### Interactive Quiz Generator
+
+* Automatically creates MCQs from uploaded documents
+* Tracks progress and score
+* Immediate feedback for correct and incorrect answers
+
+### YouTube Video Notes
+
+* Extracts transcript from YouTube videos
+* Generates structured study notes
+* Stores history for future access
+
+### Chat History Management
+
+* Multiple PDF conversations
+* ChatGPT-like chat switching
+* Persistent storage using Local Storage
+* Delete individual questions
+* Delete entire chats
+
+---
+
+# System Architecture
+
+```text
+PDF Upload
+    │
+    ▼
+Text Extraction (PyMuPDF)
+    │
+    ▼
+Chunking (RecursiveCharacterTextSplitter)
+    │
+    ├──────────────► ChromaDB
+    │                   │
+    │                   ▼
+    │            Vector Search
+    │
+    ├──────────────► BM25 Index
+    │                   │
+    │                   ▼
+    │            Keyword Search
+    │
+    ├──────────────► GraphRAG Index
+    │                   │
+    │                   ▼
+    │            Concept Retrieval
+    │
+    ▼
+Hybrid Retrieval
+    │
+    ▼
+Cross Encoder Reranking
+    │
+    ▼
+Qwen 3 8B (Ollama)
+    │
+    ▼
+Answer Generation
+```
+
+---
+
+# Technologies Used
+
+## Frontend
 
 * React.js
 * Axios
+* HTML
 * CSS
-* Vite
+* Local Storage
 
-### Backend
+## Backend
 
 * FastAPI
 * Python
 
-### AI & RAG
+## AI / NLP
 
-* LangChain
-* ChromaDB
-* HuggingFace Embeddings
 * Ollama
-* Qwen 2.5
+* Qwen3:8B
+* Sentence Transformers
+* Cross Encoder
+* spaCy
 
-### Document Processing
+## Retrieval
+
+* ChromaDB
+* BM25
+* Hybrid Retrieval
+* GraphRAG-inspired Concept Retrieval
+
+## Document Processing
 
 * PyMuPDF (fitz)
-
-### YouTube Processing
-
-* YouTube Transcript API
+* RecursiveCharacterTextSplitter
 
 ---
 
-## System Architecture
+# Retrieval Pipeline
 
-### PDF Workflow
+### Vector Search
 
-```text
-PDF Upload
-    ↓
-Text Extraction (PyMuPDF)
-    ↓
-Text Chunking
-    ↓
-Embedding Generation
-    ↓
-ChromaDB Storage
-    ↓
-User Question
-    ↓
-Similarity Search
-    ↓
-Relevant Chunks Retrieved
-    ↓
-Qwen LLM
-    ↓
-Source-Backed Answer
-```
-
-### YouTube Workflow
-
-```text
-YouTube URL
-    ↓
-Transcript Extraction
-    ↓
-Chunked Summarization
-    ↓
-Partial Summaries
-    ↓
-Final Note Generation
-    ↓
-Study Notes
-```
-
----
-
-## Key Concepts Used
-
-### Retrieval-Augmented Generation (RAG)
-
-Instead of sending the entire document to the LLM, the system:
-
-1. Splits documents into chunks
-2. Converts chunks into embeddings
-3. Stores embeddings in a vector database
-4. Retrieves only relevant chunks
-5. Generates answers using retrieved content
-
-This improves accuracy and reduces hallucinations.
-
----
-
-### Embeddings
-
-Text is converted into numerical vectors that capture semantic meaning.
+Uses Sentence Transformers embeddings and ChromaDB to retrieve semantically similar chunks.
 
 Example:
 
 ```text
-"Artificial Intelligence"
-"Machine Learning"
+Question:
+How does lazy loading work?
+
+Retrieved:
+Demand Paging
 ```
 
-These concepts will have similar embeddings even though the words differ.
+Even though the exact phrase may not exist in the PDF.
 
 ---
 
-### Vector Database
+### BM25 Keyword Search
 
-ChromaDB stores embeddings and performs similarity search to find the most relevant information for a user's question.
+Retrieves chunks containing exact keywords.
+
+Example:
+
+```text
+Question:
+What is TLB?
+
+Retrieved:
+Chunk containing TLB
+```
 
 ---
 
-## Installation
+### GraphRAG-Inspired Retrieval
 
-### Clone Repository
+Uses spaCy-based concept extraction to build concept-to-chunk relationships.
+
+Example:
+
+```text
+Question:
+How is Virtual Memory related to Demand Paging?
+```
+
+The graph identifies chunks containing both concepts and retrieves connected information.
+
+---
+
+### Cross Encoder Reranking
+
+After retrieval, all candidate chunks are reranked based on question relevance.
+
+This significantly improves answer quality by selecting the most relevant context before passing it to the LLM.
+
+---
+
+# Installation
+
+## Clone Repository
 
 ```bash
 git clone <repository-url>
-cd explainable-ai-study-assistant
+cd explainable-multi-document-rag-system
 ```
 
-### Backend Setup
+---
+
+## Backend Setup
 
 ```bash
 cd backend
@@ -183,109 +223,91 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### Frontend Setup
+---
+
+## Install spaCy Model
 
 ```bash
-cd frontend/frontend
+python -m spacy download en_core_web_sm
+```
+
+---
+
+## Install Ollama
+
+Download Ollama and pull the model:
+
+```bash
+ollama pull qwen3:8b
+```
+
+---
+
+## Start Backend
+
+```bash
+uvicorn main:app --reload
+```
+
+---
+
+## Frontend Setup
+
+```bash
+cd frontend
 
 npm install
-```
-
----
-
-## Running the Application
-
-### Start Backend
-
-```bash
-cd backend
-
-venv\Scripts\activate
-
-python -m uvicorn main:app --reload
-```
-
-Backend:
-
-```text
-http://127.0.0.1:8000
-```
-
----
-
-### Start Frontend
-
-```bash
-cd frontend/frontend
 
 npm run dev
 ```
 
-Frontend:
+---
 
-```text
-http://localhost:5173
-```
+# Usage
+
+### Upload PDF
+
+1. Select PDF
+2. Upload
+3. PDF appears in history
+
+### Ask Questions
+
+1. Select PDF
+2. Ask question
+3. Receive source-backed answer
+
+### Generate Notes
+
+1. Select PDF
+2. Click Generate Notes
+3. Download notes if needed
+
+### Generate Quiz
+
+1. Select PDF
+2. Generate quiz
+3. Attempt MCQs
+4. View score
+
+### YouTube Notes
+
+1. Paste video URL
+2. Generate notes
+3. Access from history
 
 ---
 
-## Project Structure
 
-```text
-explainable-ai-study-assistant
-│
-├── backend
-│   ├── main.py
-│   ├── rag.py
-│   ├── youtube_notes.py
-│   ├── uploaded_docs
-│   ├── chroma_db
-│   └── requirements.txt
-│
-├── frontend
-│   └── frontend
-│       ├── src
-│       │   ├── App.jsx
-│       │   ├── main.jsx
-│       │   └── index.css
-│       │
-│       ├── public
-│       ├── package.json
-│       └── vite.config.js
-│
-└── README.md
-```
+# Future Enhancements
 
----
-
-## Future Enhancements
-
-* Multi-document comparison
-* Flashcard generation
-* Quiz generation
-* PDF highlighting with source location
-* Mind map generation
-* Voice-based question answering
+* Retrieval diagnostics dashboard
+* Confidence score estimation
+* OCR support for scanned PDFs
+* Multi-modal document support
 * Cloud deployment
 * User authentication
-* Progress tracking
-
----
-
-## Learning Outcomes
-
-This project demonstrates:
-
-* Retrieval-Augmented Generation (RAG)
-* Vector Databases
-* Semantic Search
-* LLM Integration
-* FastAPI Development
-* React Frontend Development
-* Full-Stack AI Applications
-* Document Intelligence Systems
-* Explainable AI Concepts
-* YouTube Content Processing
+* Advanced knowledge graph construction
 
 ---
 
