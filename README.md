@@ -2,7 +2,7 @@
 
 ## Overview
 
-Explainable Multi-Document RAG System is an AI-powered study assistant that allows users to upload PDFs, ask questions, generate study notes, create quizzes, and extract notes from YouTube videos. The system combines Hybrid Retrieval, GraphRAG-inspired concept retrieval, Cross-Encoder reranking, and local Large Language Models to provide accurate, explainable, and source-backed responses.
+An AI-powered study assistant that allows users to upload PDFs, ask questions, generate study notes, create quizzes, and extract notes from YouTube videos. The system combines Hybrid Retrieval, GraphRAG-inspired concept retrieval, Cross-Encoder reranking, and local Large Language Models to provide accurate, explainable, and source-backed responses.
 
 Unlike traditional RAG systems that rely only on vector search, this project integrates semantic retrieval, keyword retrieval, concept-based retrieval, and reranking to improve answer quality while maintaining transparency through source citations.
 
